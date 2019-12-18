@@ -1,0 +1,10 @@
+ <%= simple_form_for(@talk) do |f| %>
+      <div class='form-input'>
+        <%= f.input :film %>
+        <%= f.input :theme %>
+        <%= f.input :date %>
+        <div class="btn mt-2 pl-0 mb-4">
+          <%= f.button :submit, 'Modifier', class:'dose-btn', method: :patch, data: { confirm: "Are you sure?" } %>
+        </div>
+        <% end %>
+

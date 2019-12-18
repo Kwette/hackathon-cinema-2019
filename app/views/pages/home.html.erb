@@ -1,2 +1,25 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<h1> CINE TALKS </h1>
+
+<% if user_signed_in? == false %>
+
+  <p> Interface acceuil user non loggé</p>
+
+
+<% elsif %>
+<% current_user.ccinema == true %>
+
+  <p> Bienvenue sur votre espace Cinéma </p>
+  <p> Créez votre profil </p>
+<%= link_to "Création profil", talks_path %></td>
+
+
+<% else %>
+<% current_user.speaker == true %>
+
+  <p> Bienvenue sur votre espace Intervenant </p>
+  <p> Créez votre profil </p>
+  <%= link_to "Création profil", talks_path %></td>
+
+<% end%>
+

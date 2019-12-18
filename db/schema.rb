@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_094237) do
+ActiveRecord::Schema.define(version: 2019_12_18_163520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "talks", force: :cascade do |t|
+    t.string "film"
+    t.string "theme"
+    t.string "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "statut", default: "pending"
+    t.index ["user_id"], name: "index_talks_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +34,18 @@ ActiveRecord::Schema.define(version: 2019_12_18_094237) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "talk_id"
+    t.boolean "ccinema", default: false
+    t.boolean "speaker"
+    t.boolean "distrib"
+    t.boolean "partenaire"
+    t.string "name"
+    t.string "localisation"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["talk_id"], name: "index_users_on_talk_id"
   end
 
+  add_foreign_key "talks", "users"
+  add_foreign_key "users", "talks"
 end
