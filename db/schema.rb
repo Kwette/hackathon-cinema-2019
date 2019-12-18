@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_163520) do
+ActiveRecord::Schema.define(version: 2019_12_18_182506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.integer "like", default: 0
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
+  end
 
   create_table "talks", force: :cascade do |t|
     t.string "film"
@@ -46,6 +57,8 @@ ActiveRecord::Schema.define(version: 2019_12_18_163520) do
     t.index ["talk_id"], name: "index_users_on_talk_id"
   end
 
+  add_foreign_key "messages", "users", column: "receiver_id"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "talks", "users"
   add_foreign_key "users", "talks"
 end
