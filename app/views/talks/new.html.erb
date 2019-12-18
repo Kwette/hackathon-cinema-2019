@@ -4,7 +4,7 @@
       <div class="col-md-6">
         <%= simple_form_for @talk do |f| %>
         <%= f.input :film %>
-        <%= f.input :theme, collection: ["#Social", "#Jeune public", "#Environnement", "#Identité", "#Diversité", "#Polar", "#Fiction", "#Urbain", "#Psychologie", "#Politique", "#Sexualité", "#Underground"] %>
+        <%= f.input :theme, collection: ["Futur", "Jeune public", "Environnement", "Identité", "Histoire", "Territoire", "Psychologie", "Politique & Société", "Underground"] %>
         <%= f.input :date,
         input_html: { placeholder: "10/05/2019" }%>
 

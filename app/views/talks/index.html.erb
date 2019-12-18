@@ -1,17 +1,16 @@
-<h1>Talks#index</h1>
-<p>Find me in app/views/talks/index.html.erb</p>
+<h1 class="text-center">Liste des Talks</h1>
 
 
       <!-- Grid of activities  -->
-    <div class="activities_list cards color_white text-center">
+    <div>
       <% @talks.each do |talk| %>
         <%= link_to talk_path(talk) do %>
-              <div class="activity-title d-flex justify-content-center align-items-center pl-3 pr-3">
+              <h1> <%= talk.user_id %> </h1>
                 <h5><%= talk.film.upcase %></h5>
-                <span class="btn btn-green small-btn"><%= talk.theme %></span>
+                <span><%= talk.theme %></span>
               </div>
-            <div class="card_bottom_info d-flex justify-content-between align-items-center">
-              <p id="nb-people"><%= talk.date %></p>
+            <div >
+              <p><%= talk.date %></p>
             </div>
           </div>
       <% end %>
