@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'message/new'
-  get 'message/create'
-  get 'message/index'
+
   resources :talks do
     resources :messages, only: [:create, :new, :index]
   end
