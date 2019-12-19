@@ -2,19 +2,16 @@
 <h1> <%= @talk.film %> </h1>
 <h1> <%= @talk.theme %> </h1>
 <h1> <%= @talk.date %> </h1>
-
-  <input type='submit' class="btn black-btn" value="Book here" >
+  <%= link_to "Book here", booking_path(@talk),
+          method: :patch  %>
 
 
   <% if @talk.user_id == current_user.id  %>
 
-  <%= link_to "Supprimer", talks_path,
+  <%= link_to "Supprimer", talk_path(@talk),
           method: :delete,
           data: { confirm: "Are you sure?" }  %>
   <%= link_to "Modifier", talk_path(@talk),
   method: :patch, data: { confirm: "Are you sure?" }  %>
   <% end %>
-
-
-
 

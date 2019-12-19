@@ -1,0 +1,21 @@
+<div class="container">
+<% @talks.each do |talk| %>
+<% if talk.statut == 'valid' %>
+<div class="card">
+  <div class="card-header">
+  Demande de débat du <%= talk.date %> pour le film: <%= talk.film %> 
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">
+    Envoyé à <%= talk.booker %>
+    </h5>
+    <p class="card-text"></p>
+    <%= link_to "Accepter", booking_accept_path(talk),
+          method: :patch  %>
+        <%= link_to "Refuser", booking_refuse_path(talk),
+          method: :patch  %>
+  </div>
+</div>
+<% end %>
+<% end %>
+</div>
