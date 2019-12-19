@@ -9,17 +9,29 @@
 <% elsif %>
 <% current_user.ccinema == true %>
 
-  <p> Bienvenue sur votre espace Cinéma </p>
-  <p> Créez votre profil </p>
-<%= link_to "Création profil", talks_path %></td>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Bienvenue sur votre espace Cinéma</h1>
+
+    <%= link_to "Liste de Talks", talks_path, class: 'btn my-btn' %>
+    <%= link_to "Proposer un talk", new_talk_path(@talk), class: 'btn my-btn' %>
+
+  </div>
+</div>
 
 
 <% else %>
 <% current_user.speaker == true %>
 
-  <p> Bienvenue sur votre espace Intervenant </p>
-  <p> Créez votre profil </p>
-  <%= link_to "Création profil", talks_path %></td>
 
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Bienvenue sur votre espace Intervenant</h1>
+
+    <%= link_to "Liste de Talks", talks_path, class: 'btn my-btn' %>
+    <%= link_to "Proposer un talk", new_talk_path(@talk), class: 'btn my-btn' %>
+
+  </div>
+</div>
 <% end%>
 
