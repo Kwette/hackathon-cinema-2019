@@ -10,6 +10,7 @@ def index
   def create
     @talk = Talk.new(talk_params)
     @talk.user_id = current_user.id
+    @talk.booker = 'L\'intervenant'
     if @talk.save
       redirect_to talk_path(@talk)
     else
@@ -26,7 +27,7 @@ def index
   end
 
   def update
-    @talk = Talk.find(params[:id])
+    @talk = Talk.find_by_id(params[:id])
     @talk.update(talk_params)
     redirect_to talk_path
   end
@@ -35,6 +36,44 @@ def index
     @talk = Talk.find(params[:id])
     @talk.destroy
     redirect_to talks_path
+  end
+
+  def booking
+    @talk = Talk.find_by_id(params[:format])
+    @talk.statut = "confirm"
+    @talk.save
+    render 'talks/booking'
+  end
+
+  def bookingList
+    @talks = Talk.all
+    render 'talks/booking_list'
+  end
+
+  def bookingAccept
+    @talk = Talk.find_by_id(params[:format])
+    @talk.statut = "valid"
+    @talk.save
+    @talks = Talk.all()
+    render 'talks/booking_list'
+  end
+
+  def bookingRefuse
+    @talk = Talk.find_by_id(params[:format])
+    @talk.statut = "refused"
+    @talk.save
+    @talks = Talk.all()
+    render 'talks/booking_list'
+  end
+
+  def bookingAcceptList
+    @talks = Talk.all
+    render 'talks/booking_validated_list.html'
+  end
+
+  def bookingRefusedList
+    @talks = Talk.all
+    render 'talks/booking_refused_list.html'
   end
 
    private
