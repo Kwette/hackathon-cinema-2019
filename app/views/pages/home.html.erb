@@ -1,30 +1,32 @@
-
 <% if user_signed_in? == false %>
 
   <p> Interface acceuil user non loggé</p>
 
 
-<% elsif %>
-<% current_user.ccinema == true %>
+<% elsif current_user.ccinema == true %>
 
 <div class="banner mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
   <div class="container mb-4">
-    <h1>Bienvenue sur votre espace Cinéma</h1>
+    <h1>Bienvenue sur votre espace exploitant</h1>
 
     <%= link_to "Liste de Talks", talks_path, class: 'btn my-btn' %>
+    <%= link_to "Talks en cours", booking_current_list_path, class: 'btn my-btn' %>
+    <%= link_to "Talks acceptés", booking_accept_list_path, class: 'btn my-btn' %>
+    <%= link_to "Talks déclinés", booking_refused_list_path, class: 'btn my-btn' %>
     <%= link_to "Proposer un talk", new_talk_path(@talk), class: 'btn my-btn' %>
 
   </div>
 </div>
 
 <% else %>
-<% current_user.speaker == true %>
-
 <div class="banner mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
   <div class="container mb-4">
     <h1>Bienvenue sur votre espace Intervenant</h1>
 
     <%= link_to "Liste de Talks", talks_path, class: 'btn my-btn' %>
+    <%= link_to "Talks en cours", booking_current_list_path, class: 'btn my-btn' %>
+    <%= link_to "Talks acceptés", booking_accept_list_path, class: 'btn my-btn' %>
+    <%= link_to "Talks déclinés", booking_refused_list_path, class: 'btn my-btn' %>
     <%= link_to "Proposer un talk", new_talk_path(@talk), class: 'btn my-btn' %>
 
 

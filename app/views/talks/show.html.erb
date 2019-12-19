@@ -4,8 +4,18 @@
   <div class="card-product-infos">
         <h2><%= @talk.film.upcase %></h2>
         <p><%= @talk.theme %></p>
-      <h2 class="card-trip-pricing"><%= @talk.date %></h2>
-  </div>
+          <% if @talk.statut == "pending" %>
+                <%= link_to "Book here", booking_path(@talk),
+                        method: :patch  %>
+        <% end %>
+
+        <% if @talk.statut == "confirm" %>
+                <%= link_to "Valider", booking_accept_path(@talk),
+                method: :patch  %>
+                <%= link_to "Décliner", booking_refuse_path(@talk),
+                method: :patch  %>
+                <h2 class="card-trip-pricing"><%= @talk.date %></h2>
+        </div>
   <div>
   <% if @talk.user_id == current_user.id  %>
        <%= link_to "Supprimer", talk_path(@talk), class: 'black-button ml4 mr-4',

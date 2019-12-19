@@ -76,6 +76,11 @@ def index
     render 'talks/booking_refused_list.html'
   end
 
+  def bookingCurrentList
+    @talks = Talk.all
+    render 'talks/booking_current_list'
+  end
+
    private
 
   def talk_params

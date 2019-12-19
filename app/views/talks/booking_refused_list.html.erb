@@ -1,22 +1,18 @@
+<h1 class="text-center" style="margin-bottom: 2em; margin-top: 1em;">Liste des Talks refusés</h1>
+<div class="cards">
 
-<div class="container">
-<% @talks.each do |talk| %>
-<% if talk.statut == 'refused' %>
-<div class="card">
-  <div class="card-header">
-  Demande de débat du <%= talk.date %> pour le film: <%= talk.film %> 
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">
-    Envoyé à <%= talk.booker %>
-    </h5>
-    <p class="card-text"></p>
-    <%= link_to "Accepter", booking_accept_path(talk),
-          method: :patch  %>
-        <%= link_to "Refuser", booking_refuse_path(talk),
-          method: :patch  %>
-  </div>
+  <% @talks.each do |talk| %>
+  <% if talk.statut == 'refused' %>
+<%= link_to talk_path(talk) do %>
+  <div class="card-product">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div class="card-product-infos">
+        <h2><%= talk.film.upcase %></h2>
+        <p><%= talk.theme %></p>
+      <h2 class="card-trip-pricing"><%= talk.date %></h2>
 </div>
-<% end %>
+  </div>
+  <% end %>
+  <% end %>
 <% end %>
 </div>
