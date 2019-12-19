@@ -1,18 +1,18 @@
-<h1 class="text-center">Liste des Talks</h1>
+<h1 class="text-center" style="margin-bottom: 2em; margin-top: 1em;">Liste des Talks</h1>
+<div class="cards">
 
+  <% @talks.each do |talk| %>
+<%= link_to talk_path(talk) do %>
+  <div class="card-product">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div class="card-product-infos">
 
-      <!-- Grid of activities  -->
-    <div>
-      <% @talks.each do |talk| %>
-        <%= link_to talk_path(talk) do %>
-              <h1> <%= talk.user_id %> </h1>
-                <h5><%= talk.film.upcase %></h5>
-                <span><%= talk.theme %></span>
-              </div>
-            <div >
-              <p><%= talk.date %></p>
-            </div>
-          </div>
-      <% end %>
-    </div>
+        <h2><%= talk.film.upcase %></h2>
+        <p><%= talk.theme %></p>
+      <h2 class="card-trip-pricing"><%= talk.date %></h2>
+</div>
+  </div>
+  <% end %>
 <% end %>
+</div>
+
