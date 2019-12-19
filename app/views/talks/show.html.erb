@@ -1,17 +1,21 @@
 
-<h1> <%= @talk.film %> </h1>
-<h1> <%= @talk.theme %> </h1>
-<h1> <%= @talk.date %> </h1>
-  <%= link_to "Book here", booking_path(@talk),
-          method: :patch  %>
-
-
+<div class="card-product" style="width: 70vw; margin: auto; margin-top: 4em">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div class="card-product-infos">
+        <h2><%= @talk.film.upcase %></h2>
+        <p><%= @talk.theme %></p>
+      <h2 class="card-trip-pricing"><%= @talk.date %></h2>
+  </div>
+  <div>
   <% if @talk.user_id == current_user.id  %>
+       <%= link_to "Supprimer", talk_path(@talk), class: 'black-button ml4 mr-4',
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
 
-  <%= link_to "Supprimer", talk_path(@talk),
-          method: :delete,
-          data: { confirm: "Are you sure?" }  %>
-  <%= link_to "Modifier", talk_path(@talk),
-  method: :patch, data: { confirm: "Are you sure?" }  %>
-  <% end %>
+       <%= link_to "Modifier", talk_path(@talk), class: 'black-button',
+          method: :patch, data: { confirm: "Are you sure?" }  %>
+    <% end %>
+  </div>
+</div>
+
 
