@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 2019_12_18_234627) do
     t.boolean "speaker"
     t.boolean "distrib"
     t.boolean "partenaire"
-    t.string "name"
-    t.string "localisation"
+    t.string "name", default: "", null: false
+    t.string "localisation", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["talk_id"], name: "index_users_on_talk_id"
