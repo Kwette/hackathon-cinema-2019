@@ -1,11 +1,20 @@
 .my-btn{
 color: white;
 padding: 0.7em;
-font-size: 1.2em;
-border : 1px solid white;
+font-size: 1.5em;
+border: 1px solid white;
 border-radius: 4px;
-margin-top : 1em;
+margin: 1em;
+background-color: rgba(250, 250, 250, 0.1);
+
 }
+
+.my-btn:hover{
+color: white;
+background-color: rgba(250, 250, 250, 0.2);
+
+}
+
 .back-btn{
 color : black;
 padding: 0.7em;
