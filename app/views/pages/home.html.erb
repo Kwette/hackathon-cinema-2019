@@ -9,24 +9,27 @@
 <% elsif %>
 <% current_user.ccinema == true %>
 
-    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
   <div class="container">
     <h1>Bienvenue sur votre espace Cinéma</h1>
-      <%= link_to "Créez votre profil", talks_path, class: "btn my-btn" %>
-      <%= link_to "Proposez un Talk", new_talk_path(@talk), class: "btn my-btn" %>
+
+    <%= link_to "Liste de Talks", talks_path, class: 'btn my-btn' %>
+    <%= link_to "Proposer un talk", new_talk_path(@talk), class: 'btn my-btn' %>
+
   </div>
 </div>
 
 <% else %>
 <% current_user.speaker == true %>
 
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
   <div class="container">
     <h1>Bienvenue sur votre espace Intervenant</h1>
-      <%= link_to "Créez votre profil", talks_path, class: "btn my-btn" %>
-      <%= link_to "Proposez un Talk", new_talk_path(@talk), class: "btn my-btn" %>
+
+    <%= link_to "Liste de Talks", talks_path, class: 'btn my-btn' %>
+    <%= link_to "Proposer un talk", new_talk_path(@talk), class: 'btn my-btn' %>
+
   </div>
 </div>
-
 <% end%>
 
